@@ -1,0 +1,134 @@
+
+/* Drop Tables */
+
+DROP TABLE admin1 CASCADE CONSTRAINTS;
+DROP TABLE car CASCADE CONSTRAINTS;
+DROP TABLE how CASCADE CONSTRAINTS;
+DROP TABLE notice CASCADE CONSTRAINTS;
+DROP TABLE one CASCADE CONSTRAINTS;
+DROP TABLE reply CASCADE CONSTRAINTS;
+DROP TABLE join CASCADE CONSTRAINTS;
+
+
+
+
+/* Create Tables */
+
+CREATE TABLE admin1
+(
+	id varchar2(20) NOT NULL,
+	pw varchar2(30),
+	PRIMARY KEY (id)
+);
+
+
+CREATE TABLE car
+(
+	carnum number(10,0),
+	carbrand varchar2(20),
+	carname varchar2(30),
+	fueltype varchar2(10),
+	cyear date,
+	color varchar2(10),
+	km number(10,0),
+	price number(19,0),
+	content varchar2(1000),
+	address varchar2(50),
+	charge number(10,0),
+	readcnt number(10,0),
+	custnum number(10,0) NOT NULL
+);
+
+
+CREATE TABLE how
+(
+	photo varchar2(1000),
+	htitle varchar2(30),
+	good varchar2(200),
+	bad varchar2(200),
+	hcontent varchar2(1500),
+	score varchar2(10),
+	custnum number(10,0) NOT NULL
+);
+
+
+CREATE TABLE join
+(
+	custnum number(10,0) NOT NULL,
+	name varchar2(20),
+	sb varchar2(10),
+	address varchar2(50),
+	id varchar2(30),
+	pw varchar2(30),
+	email varchar2(50),
+	birth date,
+	tel varchar2(30),
+	PRIMARY KEY (custnum)
+);
+
+
+CREATE TABLE notice
+(
+	nnum number(10,0),
+	ntitle varchar2(100),
+	ndate date DEFAULT SYSDATE,
+	ncontent varchar2(1000),
+	nreadcnt number(10,0),
+	custnum number(10,0) NOT NULL
+);
+
+
+CREATE TABLE one
+(
+	num number(10,0),
+	qlist varchar2(40),
+	title varchar2(100),
+	rdate date DEFAULT SYSDATE,
+	content varchar2(1000),
+	custnum number(10,0) NOT NULL
+);
+
+
+CREATE TABLE reply
+(
+	id varchar2(30),
+	rcontent varchar2(300),
+	rdate date DEFAULT SYSDATE,
+	custnum number(10,0) NOT NULL
+);
+
+
+
+/* Create Foreign Keys */
+
+ALTER TABLE car
+	ADD FOREIGN KEY (custnum)
+	REFERENCES join (custnum)
+;
+
+
+ALTER TABLE how
+	ADD FOREIGN KEY (custnum)
+	REFERENCES join (custnum)
+;
+
+
+ALTER TABLE notice
+	ADD FOREIGN KEY (custnum)
+	REFERENCES join (custnum)
+;
+
+
+ALTER TABLE one
+	ADD FOREIGN KEY (custnum)
+	REFERENCES join (custnum)
+;
+
+
+ALTER TABLE reply
+	ADD FOREIGN KEY (custnum)
+	REFERENCES join (custnum)
+;
+
+
+
