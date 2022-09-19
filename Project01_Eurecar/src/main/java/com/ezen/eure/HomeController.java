@@ -31,11 +31,13 @@ public class HomeController {
 		hs.setAttribute("loginstate", false);
 		
 		
+		
 		return "main";
 	}
 	
 	@RequestMapping(value="/index")
 	public String ko4() {
+		
 		
 		return "main";
 	}
@@ -50,6 +52,7 @@ public class HomeController {
 	
 	@RequestMapping(value="/save", method = RequestMethod.POST)
 	public String hc2(HttpServletRequest request) {
+		
 		String name=request.getParameter("name");
 		String sb=request.getParameter("sb");
 		String address=request.getParameter("address");
@@ -58,8 +61,8 @@ public class HomeController {
 		String email=request.getParameter("email");
 		String birth=request.getParameter("birth");
 		String tel=request.getParameter("tel");
-		Service ss= sqlSession.getMapper(Service.class);
-		ss.insert(name, sb, address, id, pw, email, birth, tel);
+		Service ser= sqlSession.getMapper(Service.class);
+		ser.insert(name, sb, address, id, pw, email, birth, tel);
 		return "login";
 	}
 	
@@ -68,14 +71,17 @@ public class HomeController {
 	{
 		return "login";
 	}
+	
 
+	
 	@RequestMapping(value="/login",method = RequestMethod.POST)
 	public ModelAndView login(HttpServletRequest request,  RedirectAttributes ra) {
 		ModelAndView mav = new ModelAndView();
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
+		String email = request.getParameter("email");
 		Service ser = sqlSession.getMapper(Service.class);
-		LoginDTO dto = ser.login(id,pw);
+		LoginDTO dto = ser.login(id,pw, email);
 		AdminDTO dto2 = ser.login2(id,pw);
 		if(dto!=null)
 		{

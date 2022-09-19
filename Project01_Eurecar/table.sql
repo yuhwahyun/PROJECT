@@ -33,8 +33,6 @@ CREATE TABLE car
 	km number(10,0),
 	price number(19,0),
 	content varchar2(1000),
-	address varchar2(50),
-	charge number(10,0),
 	readcnt number(10,0),
 	custnum number(10,0) NOT NULL
 );

@@ -26,7 +26,7 @@
 			<td width="300">
 				<c:choose>
 					<c:when test="${loginstate==true}">
-						<a href=""><span> ${member.id } 회원</span></a>&emsp;
+						<a href=""><span> ${member.name } 님</span></a>&emsp;
 						<a href="logout">로그아웃</a>
 					</c:when>
 					<c:when test="${adminstate==true}">

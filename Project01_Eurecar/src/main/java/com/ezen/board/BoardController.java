@@ -1,6 +1,7 @@
 package com.ezen.board;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ezen.eure.AdminDTO;
 import com.ezen.eure.LoginDTO;
+import com.ezen.eure.OneDTO;
 import com.ezen.eure.Service;
 
 
@@ -29,12 +31,15 @@ public class BoardController {
 	SqlSession sqlSession;
 	
 	@RequestMapping(value="/qs")
-	public String qs(HttpServletRequest request, RedirectAttributes ra)
+	public String qs(HttpServletRequest request, Model mo ,RedirectAttributes ra)
 	{
         HttpSession hs=request.getSession();
         if(hs.getAttribute("loginstate").equals(true))
         {
-        return "onenotice";
+		
+        	    return "onenotice";
+        	
+        	
         }
         else
         {
@@ -54,8 +59,9 @@ public class BoardController {
 		ModelAndView mav = new ModelAndView();
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
+		String email = request.getParameter("email");
 		Service ser = sqlSession.getMapper(Service.class);
-		LoginDTO dto = ser.login(id,pw);
+		LoginDTO dto = ser.login(id,pw, email);
 		if(dto!=null)
 		{
 			HttpSession hs = request.getSession();
@@ -72,14 +78,24 @@ public class BoardController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/question")
-	public String email(HttpServletRequest request, Model mo)
-	{
-		String email = request.getParameter("email");
+
+	@RequestMapping(value="/qsave", method = RequestMethod.POST)
+	public String hc3(HttpServletRequest request) {
+		String title=request.getParameter("title");
+		String content=request.getParameter("content");
+		String qlist=request.getParameter("qlist");
+		int custnum=Integer.parseInt(request.getParameter("custnum"));
 		Service ser = sqlSession.getMapper(Service.class);
-		LoginDTO dto = ser.email(email);
-		mo.addAttribute("dto",dto);
+		ser.qsinsert(title, content, qlist, custnum);
 		return "onenotice";
+	}	
+	
+	@RequestMapping(value="/qsout")
+	public String hc4(Model mo) {
+		Service ser = sqlSession.getMapper(Service.class);
+		ArrayList<OneDTO> list = ser.qsout();
+		mo.addAttribute("list", list);
+		return "qsout";
 	}
 	
 	

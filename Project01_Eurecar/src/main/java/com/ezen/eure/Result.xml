@@ -7,19 +7,16 @@
 	<insert id="insert">
 		insert into join values (join_seq.nextval,#{param1},#{param2},#{param3},#{param4},#{param5},#{param6},#{param7},#{param8})	
 	</insert>
-		<select id="login" resultType="com.ezen.eure.LoginDTO">
-			select * from join where id=#{param1} and pw=#{param2}
-		</select>
+	
+	<select id="login" resultType="com.ezen.eure.LoginDTO">
+		select * from join where id=#{param1} and pw=#{param2}
+	</select>
 
-		<select id="login2" resultType="com.ezen.eure.AdminDTO">
-			select * from admin1 where id=#{param1} and pw=#{param2}
-		</select>
+	<select id="login2" resultType="com.ezen.eure.AdminDTO">
+		select * from admin1 where id=#{param1} and pw=#{param2}
+	</select>
 		
-		<select id="email" resultType="com.ezen.eure.LoginDTO">
-			select * from join where email=#{param1} and custnum=custnum
-		</select>
-		
-		<select id="join" resultType="com.ezen.eure.LoginDTO">
-			select * from join 
-		</select>
+	<select id="qsout" resultType="com.ezen.eure.OneDTO">
+		select * from one
+	</select>
 </mapper>
