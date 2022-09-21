@@ -29,6 +29,13 @@
 	</td>
 </tr>
 <tr>
+	<th>원산지</th>
+	<td>
+	<input type="radio" name="origin" value="국산">국산
+	<input type="radio" name="origin" value="수입">수입
+	</td>
+</tr>
+<tr>
 	<th>연식</th>
 	<td><input type="text" name="cyear"></td>
 </tr>

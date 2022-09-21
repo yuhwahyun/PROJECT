@@ -9,7 +9,7 @@ public interface Service {
 	public ArrayList<OneDTO> qsout(int custnum);
 	public void qsinsert(String title, String content, String qlist, int custnum);
 	public ArrayList<CarDTO> search();
-	public void carsave(String carnum, String carbrand, String carname, String fueltype, String cyear, String color,
+	public void carsave(String carnum, String carbrand, String carname, String fueltype,String origin, String cyear, String color,
 			int km, int price, String content, int custnum);
 	public ArrayList<HowDTO> howlistselect();
 	public void howsave(String photo, String hname, String htitle, String good, String bad, String hcontent,

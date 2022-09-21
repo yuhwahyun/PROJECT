@@ -25,7 +25,7 @@
 		select num, qlist, title, rdate from one where custnum =#{custnum}
 	</select>
 	
-	<insert id="carsave">insert into car values(#{param1},#{param2},#{param3},#{param4},#{param5},#{param6},#{param7},#{param8},#{param9},0,#{param10}) </insert>
+	<insert id="carsave">insert into car values(#{param1},#{param2},#{param3},#{param4},#{param5},#{param6},#{param7},#{param8},#{param9},#{param10},0,#{param11}) </insert>
 
 	<select id="search" resultType="com.ezen.eure.CarDTO">
 		select * from car where carname like '%'|| carname ||'%' 

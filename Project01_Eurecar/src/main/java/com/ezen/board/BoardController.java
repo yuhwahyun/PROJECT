@@ -100,5 +100,20 @@ public class BoardController {
 		mo.addAttribute("list", list);
 		return "qsout";
 	}
-
+	
+	   //공지사항
+	   @RequestMapping(value="/notice")
+	   public String NOTICE(HttpServletRequest request,Model mo) {
+		   HttpSession session=request.getSession();
+			if( (Boolean) session.getAttribute("adminstate"))
+			{
+			      return "hostboard";
+			}
+			else if( (Boolean) session.getAttribute("loginstate"))
+			{
+				return "board";
+			}
+			return "board";
+		}
+	   //공지사항 끝	
 }

@@ -28,6 +28,7 @@ CREATE TABLE car
 	carbrand varchar2(20),
 	carname varchar2(30),
 	fueltype varchar2(10),
+	origin varchar2(10),
 	cyear varchar2(5),
 	color varchar2(10),
 	km number(10,0),

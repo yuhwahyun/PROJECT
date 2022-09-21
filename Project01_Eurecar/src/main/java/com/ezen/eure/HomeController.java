@@ -177,6 +177,7 @@ public class HomeController {
 		String carbrand = request.getParameter("carbrand");
 		String carname = request.getParameter("carname");
 		String fueltype = request.getParameter("fueltype");
+		String origin = request.getParameter("origin");
 		String cyear = request.getParameter("cyear");
 		String color = request.getParameter("color");
 		int km = Integer.parseInt(request.getParameter("km"));
@@ -184,7 +185,7 @@ public class HomeController {
 		String content = request.getParameter("content");
 		int custnum = Integer.parseInt(request.getParameter("custnum"));
 		Service ser= sqlSession.getMapper(Service.class);
-		ser.carsave(carnum,carbrand,carname,fueltype,cyear,color,km,price,content,custnum);
+		ser.carsave(carnum,carbrand,carname,fueltype,origin,cyear,color,km,price,content,custnum);
 		return "main";
 	}
 	
@@ -253,20 +254,6 @@ public class HomeController {
 	         }
 	      return fileList;//화일들의 목록 
 	   }
-	   //공지사항
-	   @RequestMapping(value="/notice")
-	   public String NOTICE(HttpServletRequest request,Model mo) {
-		   HttpSession session=request.getSession();
-			if( (Boolean) session.getAttribute("adminstate"))
-			{
-			      return "hostboard";
-			}
-			else if( (Boolean) session.getAttribute("loginstate"))
-			{
-				return "board";
-			}
-			return "board";
-		}
-	   //공지사항 끝
+
 	
 }
