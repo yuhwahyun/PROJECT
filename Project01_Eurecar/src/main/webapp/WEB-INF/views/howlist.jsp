@@ -120,7 +120,7 @@
          
          <c:forEach items="${list}" var="aa">
          <li>
-         <a href="howdetail" class="linkcar">
+         <a href="howdetail?hname=${aa.hname}" class="linkcar">
                <span class="carname">${aa.hname}</span><br>
                <span class="good">장점</span>${aa.good}<br>
                <span class="bad">단점</span>${aa.bad}<br>

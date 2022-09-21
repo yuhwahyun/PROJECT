@@ -56,6 +56,10 @@
       <put-attribute name="body" value="/WEB-INF/views/adcarinput.jsp"/>
    </definition>
    
+    <definition name="howdetail" extends="fixbaseLayout">
+      <put-attribute name="body" value="/WEB-INF/views/howdetail.jsp"/>
+   </definition>
+   
    <!-- 이차어때 끝 -->
    <!-- 공지사항 -->
      <definition name="board" extends="fixbaseLayout">

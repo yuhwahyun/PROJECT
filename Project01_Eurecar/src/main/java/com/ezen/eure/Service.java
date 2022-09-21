@@ -11,7 +11,10 @@ public interface Service {
 	public ArrayList<CarDTO> search();
 	public void carsave(String carnum, String carbrand, String carname, String fueltype,String origin, String cyear, String color,
 			int km, int price, String content, int custnum);
+	
 	public ArrayList<HowDTO> howlistselect();
 	public void howsave(String photo, String hname, String htitle, String good, String bad, String hcontent,
 			String score);
+	
+	public HowDTO howdetail(String hname);
 }

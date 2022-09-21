@@ -254,6 +254,18 @@ public class HomeController {
 	         }
 	      return fileList;//화일들의 목록 
 	   }
-
+	   
+	   //이차어때 상세페이지
+	   @RequestMapping(value = "/howdetail")
+	   public String howdetail(HttpServletRequest request,Model mo){
+	      
+		   String hname=request.getParameter("hname");
+		   Service ser=sqlSession.getMapper(Service.class);
+		   HowDTO dto=ser.howdetail(hname);
+		  
+		   mo.addAttribute("dto",dto);
+		   
+	      return "howdetail";
+	   }
 	
 }

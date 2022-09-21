@@ -40,5 +40,9 @@
       <select id="howlistselect" resultType="com.ezen.eure.HowDTO">
          select * from how
       </select>
+      
+ 	<select id="howdetail" resultType="com.ezen.eure.HowDTO">
+ 		select * from how where hname=#{hname}
+ 	</select>
    <!-- 이차어때 종료 -->
 </mapper>
