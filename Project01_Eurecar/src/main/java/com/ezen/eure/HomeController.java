@@ -252,7 +252,7 @@ public class HomeController {
 	         File file = new File(CURR_IMAGE_REPO_PATH +"\\"+ fileName);
 	         mFile.transferTo(new File(CURR_IMAGE_REPO_PATH +"\\"+ originalFileName)); //임시로 저장된 multipartFile을 실제 파일로 전송
 	         }
-	      return fileList;//화일들의 목록 
+	      return fileList;//화일들의 목록 크큭
 	   }
 
 	
