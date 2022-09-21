@@ -58,11 +58,16 @@
    
    <!-- 이차어때 끝 -->
    <!-- 공지사항 -->
+    <definition name="hostboardinput" extends="fixbaseLayout">
+     	 <put-attribute name="body" value="/WEB-INF/views/hostboardinput.jsp"/>
+   	</definition>
      <definition name="board" extends="fixbaseLayout">
      	 <put-attribute name="body" value="/WEB-INF/views/board.jsp"/>
    	</definition>
     <definition name="hostboard" extends="fixbaseLayout">
      	 <put-attribute name="body" value="/WEB-INF/views/hostboard.jsp"/>
    	</definition>
+
+   	
    <!-- 공지사항 끝  -->
  </tiles-definitions>

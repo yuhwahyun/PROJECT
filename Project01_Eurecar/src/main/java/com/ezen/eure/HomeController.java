@@ -102,7 +102,7 @@ public class HomeController {
 		else if(dto2!=null)
 		{
 			HttpSession hs = request.getSession();
-			hs.setAttribute("admin1", dto);
+			hs.setAttribute("admin1", dto2);
 			hs.setAttribute("adminstate", true);
 			hs.setMaxInactiveInterval(300);
 			mav.setViewName("redirect:index");
@@ -120,9 +120,8 @@ public class HomeController {
 		HttpSession hs =request.getSession();
 		hs.removeAttribute("member");
 		hs.removeAttribute("loginstate");
-		hs.setAttribute("loginstate", false);
-		hs.removeAttribute("admin1");
 		hs.removeAttribute("adminstate");
+		hs.setAttribute("loginstate", false);
 		hs.setAttribute("adminstate", false);
 		return "redirect:index";
 	}
@@ -254,6 +253,6 @@ public class HomeController {
 	         }
 	      return fileList;//화일들의 목록 크큭
 	   }
-
+	 
 	
 }

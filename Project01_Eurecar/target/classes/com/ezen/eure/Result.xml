@@ -25,6 +25,9 @@
 		select num, qlist, title, rdate from one where custnum =#{custnum}
 	</select>
 	
+	<select id="noticeid" resultType="com.ezen.eure.AdminDTO">
+		select id from admin1 where id=#{id}
+	</select>
 	<insert id="carsave">insert into car values(#{param1},#{param2},#{param3},#{param4},#{param5},#{param6},#{param7},#{param8},#{param9},#{param10},0,#{param11}) </insert>
 
 	<select id="search" resultType="com.ezen.eure.CarDTO">

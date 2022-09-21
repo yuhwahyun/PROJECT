@@ -37,15 +37,13 @@ public class BoardController {
         HttpSession hs=request.getSession();
         if(hs.getAttribute("loginstate").equals(true))
         {
-		
         	    return "onenotice";
-        	
-        	
         }
-        else
+        else if(hs.getAttribute("adminstate").equals(true))
         {
-           return "redirect:logingo2";
+        	return "onenotice";
         }
+        return "redirect:logingo2";
 	}
 	
 	@RequestMapping(value="/logingo2")
@@ -102,18 +100,71 @@ public class BoardController {
 	}
 	
 	   //공지사항
-	   @RequestMapping(value="/notice")
+	  @RequestMapping(value="/notice")
 	   public String NOTICE(HttpServletRequest request,Model mo) {
-		   HttpSession session=request.getSession();
+		  String id = request.getParameter("id");
+		  Service ser = sqlSession.getMapper(Service.class);
+		  AdminDTO ndto = ser.noticeid(id);
+		  HttpSession session=request.getSession();
 			if( (Boolean) session.getAttribute("adminstate"))
-			{
-			      return "hostboard";
+			{	
+				  NoticeService nser = sqlSession.getMapper(NoticeService.class);
+				   ArrayList<NoticeDTO> nlist = nser.boardout();
+				   mo.addAttribute("nlist",nlist);
+				   mo.addAttribute("ndto",ndto);
+			    return "hostboard";
 			}
 			else if( (Boolean) session.getAttribute("loginstate"))
-			{
-				return "board";
+			{	
+				return "redirect:board";
 			}
-			return "board";
+			return "redirect:board";
 		}
 	   //공지사항 끝	
+	   //호스트 공지사항 글쓰기 시작
+	
+	   @RequestMapping(value="/hostboardinput")
+	   public String hostboardinput(HttpServletRequest request, Model mo) {
+		   String id = request.getParameter("id");
+		   Service ser = sqlSession.getMapper(Service.class);
+		   AdminDTO ndto = ser.noticeid(id);
+		   mo.addAttribute("ndto",ndto);
+		   return "hostboardinput";
+	   }
+	   @RequestMapping(value="/hostboardsave")
+	   public String hostboardsave(HttpServletRequest request) {
+		   String ntitle = request.getParameter("ntitle");
+		   String ncontent = request.getParameter("ncontent");
+		   String id = request.getParameter("id");
+		   NoticeService nser = sqlSession.getMapper(NoticeService.class);
+		   nser.hostboardinsert(ntitle,ncontent,id);
+		   return "redirect:hostboard2";
+	   }
+	   //호스트 공지사항 글쓰기 끝
+	   //호스트 공지사항 결과보기 시작
+	   @RequestMapping(value="/board")
+	   public String boardout(Model mo) {
+		   NoticeService nser = sqlSession.getMapper(NoticeService.class);
+		   ArrayList<NoticeDTO> nlist = nser.boardout();
+		   mo.addAttribute("nlist",nlist);
+		   return "board";
+	   }
+	   
+	   @RequestMapping(value="/hostboard2")
+	   public String hostboardout2(HttpServletRequest request, Model mo) {
+		    	NoticeService nser = sqlSession.getMapper(NoticeService.class);
+			   ArrayList<NoticeDTO> nlist = nser.boardout();
+			   mo.addAttribute("nlist",nlist);
+			  
+		   return "hostboard";
+	   }
+//	   @RequestMapping(value="/hostboard")
+//	   public String hostboardout(HttpServletRequest request,Model mo) {
+//		   NoticeService nser = sqlSession.getMapper(NoticeService.class);
+//		   ArrayList<NoticeDTO> nlist = nser.boardout();
+//		   mo.addAttribute("nlist",nlist);
+//		   return "hostboard";
+//	   }
+	   //호스트 공지사항 결과보기 끝
 }
+
