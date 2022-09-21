@@ -115,5 +115,5 @@ public class BoardController {
 			}
 			return "board";
 		}
-	   //공지사항 끝	
+	   //공지사항 끝	화현테스트
 }
