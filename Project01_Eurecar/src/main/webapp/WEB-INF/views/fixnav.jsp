@@ -193,7 +193,7 @@
                <li><a href="#">고객센터</a>
                   <ul class="sub">
                      <li><a href="qs">1:1문의</a></li>
-                     <li><a href="notice">공지사항</a></li>
+                     <li><a href="notice?id=${admin1.id }">공지사항</a></li>
                   </ul>
                </li>
                

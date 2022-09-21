@@ -1,10 +1,10 @@
 
 /* Drop Tables */
 
+DROP TABLE notice CASCADE CONSTRAINTS;
 DROP TABLE admin1 CASCADE CONSTRAINTS;
 DROP TABLE car CASCADE CONSTRAINTS;
 DROP TABLE how CASCADE CONSTRAINTS;
-DROP TABLE notice CASCADE CONSTRAINTS;
 DROP TABLE one CASCADE CONSTRAINTS;
 DROP TABLE reply CASCADE CONSTRAINTS;
 DROP TABLE join CASCADE CONSTRAINTS;
@@ -73,7 +73,7 @@ CREATE TABLE notice
 	ndate date DEFAULT SYSDATE,
 	ncontent varchar2(1000),
 	nreadcnt number(10,0),
-	custnum number(10,0) NOT NULL
+	id varchar2(20) NOT NULL
 );
 
 
@@ -100,13 +100,13 @@ CREATE TABLE reply
 
 /* Create Foreign Keys */
 
-ALTER TABLE car
-	ADD FOREIGN KEY (custnum)
-	REFERENCES join (custnum)
+ALTER TABLE notice
+	ADD FOREIGN KEY (id)
+	REFERENCES admin1 (id)
 ;
 
 
-ALTER TABLE notice
+ALTER TABLE car
 	ADD FOREIGN KEY (custnum)
 	REFERENCES join (custnum)
 ;

@@ -14,4 +14,5 @@ public interface Service {
 	public ArrayList<HowDTO> howlistselect();
 	public void howsave(String photo, String hname, String htitle, String good, String bad, String hcontent,
 			String score);
+	public AdminDTO noticeid(String id);
 }

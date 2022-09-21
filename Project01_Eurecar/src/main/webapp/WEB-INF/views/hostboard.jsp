@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,6 +52,18 @@
 			</div>
 		</div>
 	</div>
-	아아아
+	<a href="hostboardinput?id=${ndto.id}">글쓰기</a><br>
+	<table border="1" align="left">
+	<tr><th>NO.</th><th>SUBJECT</th><th>NAME</th></tr>
+	<c:forEach items="${nlist }" var="aa">
+	<tr>
+	<td>${aa.nnum }</td>
+	<td>${aa.ncontent }</td>
+	<td>${aa.id}</td>
+	</tr>
+	</c:forEach>
+	</table>
+	
+	
 </body>
 </html>
