@@ -24,11 +24,11 @@ CREATE TABLE admin1
 
 CREATE TABLE car
 (
-	carnum number(10,0),
+	carnum varchar2(20),
 	carbrand varchar2(20),
 	carname varchar2(30),
 	fueltype varchar2(10),
-	cyear date,
+	cyear varchar2(5),
 	color varchar2(10),
 	km number(10,0),
 	price number(19,0),
@@ -41,12 +41,12 @@ CREATE TABLE car
 CREATE TABLE how
 (
 	photo varchar2(1000),
+	hname varchar2(100),
 	htitle varchar2(30),
 	good varchar2(200),
 	bad varchar2(200),
 	hcontent varchar2(1500),
-	score varchar2(10),
-	custnum number(10,0) NOT NULL
+	score varchar2(10)
 );
 
 
@@ -100,12 +100,6 @@ CREATE TABLE reply
 /* Create Foreign Keys */
 
 ALTER TABLE car
-	ADD FOREIGN KEY (custnum)
-	REFERENCES join (custnum)
-;
-
-
-ALTER TABLE how
 	ADD FOREIGN KEY (custnum)
 	REFERENCES join (custnum)
 ;

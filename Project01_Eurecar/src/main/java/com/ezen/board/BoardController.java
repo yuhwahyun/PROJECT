@@ -30,6 +30,7 @@ public class BoardController {
 	@Autowired
 	SqlSession sqlSession;
 	
+	//1:1¹®ÀÇ
 	@RequestMapping(value="/qs")
 	public String qs(HttpServletRequest request, Model mo ,RedirectAttributes ra)
 	{
@@ -61,7 +62,7 @@ public class BoardController {
 		String pw = request.getParameter("pw");
 		String email = request.getParameter("email");
 		Service ser = sqlSession.getMapper(Service.class);
-		LoginDTO dto = ser.login(id,pw, email);
+		LoginDTO dto = ser.login(id, pw, email);
 		if(dto!=null)
 		{
 			HttpSession hs = request.getSession();
@@ -78,25 +79,26 @@ public class BoardController {
 		return mav;
 	}
 	
+	
 
 	@RequestMapping(value="/qsave", method = RequestMethod.POST)
-	public String hc3(HttpServletRequest request) {
+	public String onenoticesave(HttpServletRequest request) {
 		String title=request.getParameter("title");
 		String content=request.getParameter("content");
 		String qlist=request.getParameter("qlist");
-		int custnum=Integer.parseInt(request.getParameter("custnum"));
+		int custnum = Integer.parseInt(request.getParameter("custnum"));
 		Service ser = sqlSession.getMapper(Service.class);
-		ser.qsinsert(title, content, qlist, custnum);
+		ser.qsinsert(qlist, title, content, custnum);
 		return "onenotice";
 	}	
 	
 	@RequestMapping(value="/qsout")
-	public String hc4(Model mo) {
+	public String qsout(HttpServletRequest request, Model mo) {
+		int custnum = Integer.parseInt(request.getParameter("custnum"));
 		Service ser = sqlSession.getMapper(Service.class);
-		ArrayList<OneDTO> list = ser.qsout();
+		ArrayList<OneDTO> list = ser.qsout(custnum);
 		mo.addAttribute("list", list);
 		return "qsout";
 	}
-	
-	
+
 }

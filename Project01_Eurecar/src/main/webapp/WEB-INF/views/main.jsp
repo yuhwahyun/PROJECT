@@ -3,17 +3,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style type="text/css">
-#ko{
-text-align: center;
-}
-</style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	body{
+		margin:0 auto;
+	}
+	
+	.mainimg{
+		margin:0 auto;
+		width:100%;
+	}
+</style>
 </head>
 <body>
-<div id="ko">
-<img src="./image/apple.jpg" style="width: 30%;">
+ <div class="mainimg">
+	<!--  <img src="./image/mainimg.jpg">-->
 </div>
 </body>
 </html>

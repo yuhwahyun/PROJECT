@@ -6,32 +6,63 @@
    <definition name="baseLayout"  template="/WEB-INF/views/layout.jsp">
       <put-attribute name="title" value="" />
       <put-attribute name="top" value="/WEB-INF/views/top.jsp" />
-      <put-attribute name="body" value="" />
+      <put-attribute name="body" value="/WEB-INF/views/main.jsp" />
       <put-attribute name="footer" value="/WEB-INF/views/footer.jsp" />
    </definition>
+
+  	<definition name="fixbaseLayout"  template="/WEB-INF/views/layout.jsp">
+      <put-attribute name="title" value="" />
+      <put-attribute name="top" value="/WEB-INF/views/fixnav.jsp" />
+      <put-attribute name="body" value="/WEB-INF/views/main.jsp" />
+      <put-attribute name="footer" value="/WEB-INF/views/footer.jsp" />
+   </definition>
+  
    <definition name="main" extends="baseLayout">   
       <put-attribute name="body" value="/WEB-INF/views/main.jsp" />
    </definition>
-	<definition name="login" extends="baseLayout">   
+	<definition name="login" extends="fixbaseLayout">   
       <put-attribute name="body" value="/WEB-INF/views/login.jsp" />
    </definition>
    
-   	<definition name="Joininput" extends="baseLayout">
-		<put-attribute name="title" value="메인화면"/>
+   	<definition name="Joininput" extends="fixbaseLayout">
 		<put-attribute name="body" value="/WEB-INF/views/Joininput.jsp"/>
 	</definition>
-	 <definition name="onenotice" extends="baseLayout">
-		<put-attribute name="title" value="메인화면"/>
+	 <definition name="onenotice" extends="fixbaseLayout">
 		<put-attribute name="body" value="/WEB-INF/views/onenotice.jsp"/>
 	</definition>
 	
-	<definition name="loginnotice" extends="baseLayout">
-		<put-attribute name="title" value="메인화면"/>
+	<definition name="loginnotice" extends="fixbaseLayout">
 		<put-attribute name="body" value="/WEB-INF/views/loginnotice.jsp"/>
 	</definition>
 	
-		<definition name="qsout" extends="baseLayout">
-		<put-attribute name="title" value="메인화면"/>
+	<definition name="qsout" extends="fixbaseLayout">
 		<put-attribute name="body" value="/WEB-INF/views/qsout.jsp"/>
 	</definition>
+	
+	<definition name="carinput" extends="fixbaseLayout">
+		<put-attribute name="body" value="/WEB-INF/views/carinput.jsp"/>
+	</definition>
+	<definition name="logincar" extends="fixbaseLayout">
+
+<put-attribute name="body" value="/WEB-INF/views/logincar.jsp"/>
+
+</definition>
+	<!-- 이차어때 시작 -->
+   <definition name="howlist" extends="fixbaseLayout">
+      <put-attribute name="body" value="/WEB-INF/views/howlist.jsp"/>
+   </definition>
+   
+   <definition name="adcarinput" extends="fixbaseLayout">
+      <put-attribute name="body" value="/WEB-INF/views/adcarinput.jsp"/>
+   </definition>
+   
+   <!-- 이차어때 끝 -->
+   <!-- 공지사항 -->
+     <definition name="board" extends="fixbaseLayout">
+     	 <put-attribute name="body" value="/WEB-INF/views/board.jsp"/>
+   	</definition>
+    <definition name="hostboard" extends="fixbaseLayout">
+     	 <put-attribute name="body" value="/WEB-INF/views/hostboard.jsp"/>
+   	</definition>
+   <!-- 공지사항 끝  -->
  </tiles-definitions>

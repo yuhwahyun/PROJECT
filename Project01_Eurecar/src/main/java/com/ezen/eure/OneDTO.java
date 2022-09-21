@@ -2,7 +2,7 @@ package com.ezen.eure;
 
 public class OneDTO {
 	int num;
-	String title, rdate, content, qlist;
+	String qlist ,title, rdate, content;
 	int custnum;
 	public int getNum() {
 		return num;
@@ -21,6 +21,12 @@ public class OneDTO {
 	}
 	public void setRdate(String rdate) {
 		this.rdate = rdate;
+	}
+	public String getQlist() {
+		return qlist;
+	}
+	public void setQlist(String qlist) {
+		this.qlist = qlist;
 	}
 	public String getContent() {
 		return content;

@@ -104,7 +104,18 @@
       </dependency>
 		
 		<!-- 마이바티스 종료  -->
-		
+		<!-- 다중 파일 업로드  -->
+      <dependency>
+         <groupId>commons-fileupload</groupId>
+         <artifactId>commons-fileupload</artifactId>
+         <version>1.2.1</version>
+       </dependency>
+   
+      <dependency>
+         <groupId>commons-io</groupId>
+         <artifactId>commons-io</artifactId>
+         <version>1.4</version>
+      </dependency>    
 		<!-- 타일즈 설정  -->
 			<!-- https://mvnrepository.com/artifact/org.apache.tiles/tiles-jsp -->
 			<dependency>
