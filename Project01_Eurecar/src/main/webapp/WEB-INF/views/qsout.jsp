@@ -132,13 +132,12 @@
 	
 	<table border="1" align="center">
 	<tr>
-		<th>번호</th><th>문의항목</th><th>제목</th><th>문의일</th>
+		<th>번호</th><th>제목</th><th>문의일</th>
 	</tr>
 	<c:forEach items="${list }" var="qs">
 	<tr>
 		<td>${qs.num }</td>
-		<td>${qs.qlist }</td>
-		<td>${qs.title }</td>
+		<td><a href="onedetail?num=${qs.num}">${qs.title }</a></td>
 		<td>
 		<fmt:parseDate value="${qs.rdate }" var="rdate" pattern="yyyy-MM-dd"/>
 		<fmt:formatDate value="${rdate }" pattern="yyyy.MM.dd"/>

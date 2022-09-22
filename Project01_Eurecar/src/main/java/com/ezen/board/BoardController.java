@@ -101,6 +101,26 @@ public class BoardController {
 		return "qsout";
 	}
 	
+	@RequestMapping(value="/onedetail")
+	public String detail(HttpServletRequest request, Model mo) {
+		int num = Integer.parseInt(request.getParameter("num"));
+		
+		Service ser = sqlSession.getMapper(Service.class);
+		OneDTO dto = ser.qsdetail(num);
+		mo.addAttribute("dto",dto);
+		return "onedetail";
+	}
+	
+	@RequestMapping(value="/qsout2")
+	public String backqslist(HttpServletRequest request, Model mo) {
+		int custnum = Integer.parseInt(request.getParameter("custnum"));
+		Service ser = sqlSession.getMapper(Service.class);
+		ArrayList<OneDTO> list = ser.qsout(custnum);
+		mo.addAttribute("list", list);
+		
+		return "qsout";
+	}
+	
 	   //공지사항
 	   @RequestMapping(value="/notice")
 	   public String NOTICE(HttpServletRequest request,Model mo) {
@@ -116,4 +136,6 @@ public class BoardController {
 			return "board";
 		}
 	   //공지사항 끝	
+	   
+	   
 }

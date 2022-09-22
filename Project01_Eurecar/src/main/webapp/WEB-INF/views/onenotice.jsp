@@ -146,9 +146,9 @@
 					<h4>제목</h4>&emsp;&emsp;&emsp;
 					<input type="text" name="title">
 				</div>
-				<div class="custnum">
+				<%-- <div class="custnum">
 					<input type="hidden" name="custnum" value="${member.custnum}" readonly>
-				</div>
+				</div> --%>
 				<textarea style="width:93.6%; height: 402px;" name="content"></textarea>
 				<br><input type="submit" value="등록"> <input type="button" value="취소" onclick="location.href='index'">
 			</div>
