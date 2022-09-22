@@ -20,7 +20,8 @@ public interface Service {
 	public void howsave(String photo, String hname, String htitle, String good, String bad, String hcontent,
 			String score);
 	
+	public HowDTO howdetail(String hname);
 
 
-
+	public AdminDTO noticeid(String id);
 }

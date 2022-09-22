@@ -1,6 +1,7 @@
 
 /* Drop Tables */
 
+DROP TABLE notice CASCADE CONSTRAINTS;
 DROP TABLE admin1 CASCADE CONSTRAINTS;
 DROP TABLE car CASCADE CONSTRAINTS;
 DROP TABLE how CASCADE CONSTRAINTS;
@@ -72,7 +73,12 @@ CREATE TABLE notice
 	ntitle varchar2(100),
 	ndate date DEFAULT SYSDATE,
 	ncontent varchar2(1000),
+<<<<<<< HEAD
 	nreadcnt number(10,0)
+=======
+	nreadcnt number(10,0),
+	id varchar2(20) NOT NULL
+>>>>>>> branch 'master' of https://github.com/Sungan-park/PROJECT.git
 );
 
 
@@ -99,12 +105,21 @@ CREATE TABLE reply
 
 /* Create Foreign Keys */
 
+ALTER TABLE notice
+	ADD FOREIGN KEY (id)
+	REFERENCES admin1 (id)
+;
+
+
+<<<<<<< HEAD
+=======
 ALTER TABLE car
 	ADD FOREIGN KEY (custnum)
 	REFERENCES join (custnum)
 ;
 
 
+>>>>>>> branch 'master' of https://github.com/Sungan-park/PROJECT.git
 ALTER TABLE one
 	ADD FOREIGN KEY (custnum)
 	REFERENCES join (custnum)
